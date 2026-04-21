@@ -1,0 +1,105 @@
+questions:
+  - id: Q001
+    pregunta: "Debe haber homogeneidad de formato en el tamaño de letras entre títulos y subtítulos."
+    tipo_check: layout_visual
+    metodo: font_size_consistency
+    umbral_confianza: 0.85
+    requiere_llm: false
+
+  - id: Q002
+    pregunta: "Deben haber marcadores en el documento."
+    tipo_check: document_structure
+    metodo: bookmark_presence
+    umbral_confianza: 0.95
+    requiere_llm: false
+
+  - id: Q003
+    pregunta: "No debe aparecer ningún error de marcadores no definidos (ejemplo: \"¡Error! No se encuentra el origen de la referencia\")."
+    tipo_check: pattern_rule
+    metodo: forbidden_marker_error_scan
+    umbral_confianza: 0.99
+    requiere_llm: false
+
+  - id: Q004
+    pregunta: "Debe aparecer las firmas al final del documento (solamente si es la Memoria, Plan Marco, Plan de Obra, Presupuesto para el conocimiento de la administración, PPTP y Presupuesto)."
+    tipo_check: document_structure
+    metodo: signature_block_at_end
+    umbral_confianza: 0.8
+    requiere_llm: false
+
+  - id: Q005
+    pregunta: "La fecha de entrega de la portada debe ser la misma que la de las firmas en caso de haber firmas."
+    tipo_check: cross_field_consistency
+    metodo: compare_cover_and_signature_dates
+    umbral_confianza: 0.8
+    requiere_llm: false
+
+  - id: Q006
+    pregunta: "Debe incluirse la portada al documento."
+    tipo_check: document_structure
+    metodo: cover_page_detection
+    umbral_confianza: 0.9
+    requiere_llm: false
+
+  - id: Q007
+    pregunta: "No debe haber hojas en blanco."
+    tipo_check: layout_visual
+    metodo: blank_page_detection
+    umbral_confianza: 0.98
+    requiere_llm: false
+
+  - id: Q008
+    pregunta: "No debe haber errores de paginación (la página 1 es la primera después del índice)."
+    tipo_check: document_structure
+    metodo: pagination_consistency_after_index
+    umbral_confianza: 0.75
+    requiere_llm: false
+
+  - id: Q009
+    pregunta: "No debe aparecer ninguna referencia a GPO."
+    tipo_check: pattern_rule
+    metodo: forbidden_term_scan
+    umbral_confianza: 0.99
+    requiere_llm: false
+
+  - id: Q010
+    pregunta: "Los criterios de formato deben seguir lo especificado al documento: NAG 1-0-1.0 o NAG4-0-0.0 2.ª Ed. - enero 2024."
+    tipo_check: external_normative_check
+    metodo: nag_format_compliance
+    umbral_confianza: 0.65
+    requiere_llm: true
+
+  - id: Q011
+    pregunta: "En el caso de existir apéndices, deben estar adjuntos al documento."
+    tipo_check: document_structure
+    metodo: appendix_attachment_consistency
+    umbral_confianza: 0.7
+    requiere_llm: false
+
+  - id: Q012
+    pregunta: "No aparecen errores ortográficos."
+    tipo_check: semantic_judgment
+    metodo: spelling_error_detection
+    umbral_confianza: 0.7
+    requiere_llm: true
+
+  - id: Q013
+    pregunta: "Las imágenes y las fórmulas son perfectamente legibles."
+    tipo_check: layout_visual
+    metodo: image_formula_legibility_review
+    umbral_confianza: 0.6
+    requiere_llm: true
+
+  - id: Q014
+    pregunta: "No existen referencias a otros proyectos fuera de los apartados de antecedentes."
+    tipo_check: semantic_judgment
+    metodo: out_of_scope_project_reference_scan
+    umbral_confianza: 0.7
+    requiere_llm: true
+
+  - id: Q015
+    pregunta: "El título del documento."
+    tipo_check: document_structure
+    metodo: document_title_extraction
+    umbral_confianza: 0.9
+    requiere_llm: false
