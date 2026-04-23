@@ -1,16 +1,16 @@
 question_id,status,result,confidence,evidence,page_start,page_end,notes,review_required,processed_at
 Q001,pending,,,,,,"Pendiente de revision visual de homogeneidad tipografica.",yes,
-Q002,pending,,,,,,"Pendiente de verificar bookmarks.",no,
-Q003,pending,,,,,,"Pendiente de escaneo de errores de referencia.",no,
-Q004,pending,,,,,,"Pendiente de localizar firmas al final del documento.",no,
-Q005,pending,,,,,,"Pendiente de comparar fecha de portada y firmas.",no,
+Q002,done,false,0.99,"Catalogo PDF sin entrada /Outlines; no se detectan marcadores embebidos.",1,119,"Check determinista sobre estructura PDF base.",no,2026-04-21T13:50:18.556340+00:00
+Q003,done,true,0.99,"No aparecen las cadenas 'Error! Marcador no definido' ni 'Bookmark not defined' en el texto extraido.",1,119,"Escaneo global de texto del PDF base.",no,2026-04-21T13:50:18.556340+00:00
+Q004,done,false,0.86,"En el cierre no se identifica bloque de firmas: p.117 casi vacia, p.118 en blanco y p.119 inicia 'APENDICE 1: DECLARACION RESPONSABLE'.",117,119,"No se localizaron etiquetas ni campos de firma al final del documento.",yes,2026-04-21T13:50:18.556340+00:00
+Q005,skipped,n_a,0.0,"Q004 no localiza firmas; no aplica la comparacion entre fecha de portada y fecha de firmas.",117,119,"Aplicabilidad condicionada a hay_firmas = true.",no,2026-04-21T13:50:18.556340+00:00
 Q006,pending,,,,,,"Pendiente de detectar portada.",no,
-Q007,pending,,,,,,"Pendiente de detectar paginas en blanco.",no,
+Q007,done,false,0.99,"Se detectan hojas sin contenido en las paginas 2, 6 y 118 (sin /Contents ni texto extraible).",2,118,"Check determinista sobre objetos de pagina del PDF base.",no,2026-04-21T13:50:18.556340+00:00
 Q008,pending,,,,,,"Pendiente de validar paginacion tras el indice.",no,
 Q009,pending,,,,,,"Pendiente de buscar referencias a GPO.",no,
 Q010,pending,,,,,,"Requiere norma NAG cargada para evaluacion completa.",yes,
 Q011,pending,,,,,,"Pendiente de validar anexos y apendices.",no,
-Q012,pending,,,,,,"Pendiente de revision ortografica.",yes,
+Q012,done,no_ok,0.78,"Se observan errores ortograficos o tipograficos claros: 'SISTEMAS DE ASOSICADOS' (p.3 y p.9), 'Infreaestructura' (p.12) y 'Clausulas' sin tilde (p.98).",3,98,"Revision conservadora sobre texto extraido; algunas separaciones internas pueden venir del PDF, pero estas formas son claramente anomalias.",yes,2026-04-21T13:50:18.556340+00:00
 Q013,pending,,,,,,"Pendiente de revisar legibilidad visual.",yes,
 Q014,pending,,,,,,"Pendiente de revisar referencias a otros proyectos.",yes,
 Q015,pending,,,,,,"Pendiente de extraer titulo del documento.",no,
